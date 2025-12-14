@@ -2,8 +2,19 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Mawethu Mpande - Entrepreneur & Visionary</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <title>Mawethu Mpande – COO & CFO at Sisonke Edutech</title>
+    
+    <meta name="description" content="Mawethu Mpande – Co-Founder, COO & CFO at Sisonke Edutech. Educational technology leader, entrepreneur, and creative business strategist driving innovation in EdTech and digital services.">
+    <meta name="keywords" content="Mawethu Mpande, Sisonke Edutech, EdTech leader, COO CFO, entrepreneur South Africa, education technology">
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    
     <style>
         * {
             margin: 0;
@@ -11,338 +22,808 @@
             box-sizing: border-box;
         }
         
+        :root {
+            --primary: #4285f4;
+            --accent: #0f9d58;
+            --red: #ea4335;
+            --yellow: #fbbc04;
+            --bg-light: #ffffff;
+            --bg-surface: #f8f9fa;
+            --glass: rgba(255, 255, 255, 0.9);
+            --glass-border: rgba(0, 0, 0, 0.08);
+            --text-primary: #202124;
+            --text-secondary: #5f6368;
+            --shadow: 0 1px 3px rgba(60, 64, 67, 0.3);
+            --shadow-hover: 0 4px 12px rgba(60, 64, 67, 0.2);
+        }
+        
+        html {
+            scroll-behavior: smooth;
+        }
+        
         body {
-            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-            background: #0a0a0a;
-            color: #e0e0e0;
+            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
+            background: var(--bg-light);
+            color: var(--text-primary);
             line-height: 1.6;
+            overflow-x: hidden;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+            touch-action: manipulation;
+        }
+        
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 15% 20%, rgba(66, 133, 244, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 85% 80%, rgba(15, 157, 88, 0.08) 0%, transparent 40%),
+                radial-gradient(circle at 50% 50%, rgba(251, 188, 4, 0.05) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(234, 67, 53, 0.06) 0%, transparent 40%);
+            pointer-events: none;
+            z-index: 0;
         }
         
         .container {
-            max-width: 1100px;
+            max-width: 1200px;
             margin: 0 auto;
-            padding: 1rem;
+            padding: 0 1.5rem;
+            position: relative;
+            z-index: 1;
+        }
+        
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            backdrop-filter: blur(20px);
+            background: rgba(255, 255, 255, 0.95);
+            border-bottom: 1px solid var(--glass-border);
+            z-index: 1000;
+            animation: slideDown 0.5s ease;
+            -webkit-backdrop-filter: blur(20px);
+            box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1);
+        }
+        
+        @keyframes slideDown {
+            from { transform: translateY(-100%); }
+            to { transform: translateY(0); }
+        }
+        
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 1rem 1.5rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        
+        .logo {
+            font-family: 'Syne', sans-serif;
+            font-weight: 800;
+            font-size: 1.5rem;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            color: var(--text-secondary);
+            text-decoration: none;
+            font-weight: 500;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+        
+        .nav-links a:hover {
+            color: var(--primary);
+        }
+        
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            gap: 0.4rem;
+            cursor: pointer;
+            padding: 0.75rem;
+            -webkit-tap-highlight-color: transparent;
+            touch-action: manipulation;
+        }
+        
+        .menu-toggle span {
+            width: 1.75rem;
+            height: 2.5px;
+            background: var(--text-primary);
+            transition: all 0.3s;
+            border-radius: 2px;
         }
         
         header {
-            padding: 2.5rem 1rem;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
             text-align: center;
-            background: linear-gradient(135deg, #0F4C81, #1877F2);
+            padding: 6rem 1.5rem 4rem;
+            position: relative;
+        }
+        
+        .hero-content {
+            animation: fadeInUp 1s ease;
+        }
+        
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-label {
+            display: inline-block;
+            padding: 0.5rem 1.25rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 50px;
+            font-size: 0.875rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+            margin-bottom: 2rem;
+            backdrop-filter: blur(10px);
         }
         
         h1 {
-            font-size: clamp(1.8rem, 5vw, 3rem);
-            color: #fff;
-            margin-bottom: 0.5rem;
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 800;
+            line-height: 1.1;
+            margin-bottom: 1.5rem;
+            background: linear-gradient(135deg, var(--text-primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
         }
         
-        .subtitle {
-            color: rgba(255,255,255,0.9);
-            font-size: clamp(0.9rem, 2vw, 1.1rem);
-            margin-bottom: 1rem;
+        .hero-subtitle {
+            font-size: clamp(1.25rem, 3vw, 1.75rem);
+            color: var(--text-secondary);
+            margin-bottom: 3rem;
+            font-weight: 500;
         }
         
-        .tagline {
+        .cta-button {
             display: inline-block;
-            background: rgba(0,0,0,0.3);
-            padding: 0.75rem 1.5rem;
+            padding: 1rem 2.5rem;
+            background: var(--primary);
+            color: white;
+            text-decoration: none;
             border-radius: 50px;
-            font-size: clamp(1rem, 2.5vw, 1.3rem);
             font-weight: 600;
-            color: #00C4CC;
-            margin-top: 0.5rem;
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
+            -webkit-tap-highlight-color: transparent;
         }
         
-        main {
-            padding: 2rem 0;
+        .cta-button:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3);
+            background: #5a95f5;
         }
         
         section {
-            background: rgba(30,30,30,0.8);
-            border: 1px solid rgba(255,255,255,0.1);
-            border-radius: 12px;
-            padding: 1.5rem;
-            margin-bottom: 1.5rem;
+            padding: 5rem 0;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeIn 1s ease;
+        }
+        
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
         }
         
         h2 {
-            font-size: clamp(1.3rem, 3vw, 1.8rem);
-            color: #fff;
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2rem, 5vw, 3rem);
+            font-weight: 700;
             margin-bottom: 1rem;
-            padding-bottom: 0.5rem;
-            border-bottom: 2px solid #1877F2;
         }
         
-        h3 {
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            color: #1877F2;
-            margin-bottom: 0.5rem;
+        .section-subtitle {
+            color: var(--text-secondary);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 1.125rem;
         }
         
-        p {
-            margin-bottom: 1rem;
-            font-size: clamp(0.9rem, 2vw, 1rem);
+        .glass-card {
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 20px;
+            padding: 1.75rem;
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+            transition: all 0.3s;
+            box-shadow: var(--shadow);
         }
         
-        .goals {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
+        .glass-card:hover {
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+            transform: translateY(-2px);
         }
         
-        .goal-card {
-            background: rgba(24,119,242,0.1);
-            border-left: 4px solid #1877F2;
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .goal-amount {
-            font-size: clamp(1.5rem, 4vw, 2rem);
-            font-weight: 900;
-            color: #00C4CC;
-        }
-        
-        .ventures {
+        .ventures-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .venture-card {
-            background: rgba(20,20,20,0.6);
-            border: 1px solid rgba(0,196,204,0.3);
-            padding: 1.25rem;
-            border-radius: 10px;
-            transition: transform 0.2s;
-        }
-        
-        .venture-card:hover {
-            transform: translateY(-3px);
-            border-color: #00C4CC;
-        }
-        
-        .venture-title {
-            color: #00C4CC;
-            font-size: clamp(1rem, 2.5vw, 1.2rem);
-            font-weight: 700;
-            margin-bottom: 0.5rem;
-        }
-        
-        .venture-desc {
-            font-size: 0.9rem;
-            color: #b0b0b0;
-            margin-bottom: 0.5rem;
-        }
-        
-        .venture-note {
-            font-size: 0.8rem;
-            color: #808080;
-            font-style: italic;
-        }
-        
-        .books-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
-            margin-top: 1rem;
-        }
-        
-        .book-item {
-            padding: 0.75rem 0;
-        }
-        
-        .book-title {
-            color: #1877F2;
-            font-weight: 700;
-            font-size: 1rem;
-        }
-        
-        .book-desc {
-            color: #909090;
-            font-size: 0.85rem;
-        }
-        
-        .spiritual-box {
-            background: rgba(15,76,129,0.2);
-            border: 1px solid #1877F2;
-            padding: 1rem;
-            border-radius: 8px;
-        }
-        
-        .schedule-box {
-            background: rgba(20,20,20,0.5);
-            border-left: 3px solid #1877F2;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-        }
-        
-        .sabbath-box {
-            background: rgba(139,0,0,0.2);
-            border-left: 3px solid #dc2626;
-            padding: 1rem;
-            margin-bottom: 1rem;
-            border-radius: 5px;
-        }
-        
-        .highlight {
-            color: #00C4CC;
-            font-weight: 600;
-        }
-        
-        .strong {
-            color: #1877F2;
-            font-weight: 600;
-        }
-        
-        footer {
-            text-align: center;
-            padding: 2rem 1rem;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            margin-top: 2rem;
-            color: #808080;
-        }
-        
-        footer p {
-            margin-bottom: 0.5rem;
+            gap: 1.25rem;
+            margin-top: 3rem;
         }
         
         @media (max-width: 640px) {
-            section {
-                padding: 1.25rem;
+            .ventures-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .venture-card {
+            animation: fadeInUp 0.6s ease both;
+        }
+        
+        .venture-card:nth-child(1) { animation-delay: 0.1s; }
+        .venture-card:nth-child(2) { animation-delay: 0.2s; }
+        .venture-card:nth-child(3) { animation-delay: 0.3s; }
+        .venture-card:nth-child(4) { animation-delay: 0.4s; }
+        .venture-card:nth-child(5) { animation-delay: 0.5s; }
+        .venture-card:nth-child(6) { animation-delay: 0.6s; }
+        
+        .venture-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 1rem;
+        }
+        
+        .venture-description {
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 640px) {
+            .stats-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .stat-card {
+            text-align: center;
+            padding: 2rem 1.5rem;
+        }
+        
+        .stat-number {
+            font-family: 'Syne', sans-serif;
+            font-size: clamp(2.5rem, 5vw, 4rem);
+            font-weight: 800;
+            background: linear-gradient(135deg, var(--primary), var(--accent));
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            background-clip: text;
+            margin-bottom: 0.5rem;
+        }
+        
+        .stat-label {
+            color: var(--text-secondary);
+            font-weight: 500;
+        }
+        
+        .skills-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 1rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 640px) {
+            .skills-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .skill-tag {
+            padding: 1rem 1.25rem;
+            background: var(--glass);
+            border: 1px solid var(--glass-border);
+            border-radius: 12px;
+            text-align: center;
+            font-weight: 600;
+            transition: all 0.3s;
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            font-size: 0.9rem;
+        }
+        
+        .skill-tag:hover {
+            background: var(--bg-surface);
+            border-color: var(--primary);
+            box-shadow: var(--shadow-hover);
+        }
+        
+        .timeline {
+            max-width: 800px;
+            margin: 3rem auto 0;
+            position: relative;
+            padding-left: 1rem;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 0;
+            top: 0;
+            height: 100%;
+            width: 3px;
+            background: linear-gradient(180deg, var(--primary), var(--accent));
+            border-radius: 3px;
+        }
+        
+        .timeline-item {
+            padding-left: 2.5rem;
+            margin-bottom: 2.5rem;
+            position: relative;
+            animation: slideInLeft 0.6s ease both;
+        }
+        
+        @media (max-width: 640px) {
+            .timeline-item {
+                padding-left: 2rem;
+                margin-bottom: 2rem;
+            }
+        }
+        
+        .timeline-item:nth-child(1) { animation-delay: 0.1s; }
+        .timeline-item:nth-child(2) { animation-delay: 0.2s; }
+        .timeline-item:nth-child(3) { animation-delay: 0.3s; }
+        .timeline-item:nth-child(4) { animation-delay: 0.4s; }
+        
+        @keyframes slideInLeft {
+            from {
+                opacity: 0;
+                transform: translateX(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(0);
+            }
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -7px;
+            top: 0;
+            width: 16px;
+            height: 16px;
+            border-radius: 50%;
+            background: var(--primary);
+            box-shadow: 0 0 0 3px var(--bg-light), 0 0 10px rgba(66, 133, 244, 0.4);
+        }
+        
+        .timeline-date {
+            color: var(--primary);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+            font-size: 0.875rem;
+        }
+        
+        .timeline-title {
+            font-family: 'Syne', sans-serif;
+            font-size: 1.25rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            color: var(--text-primary);
+        }
+        
+        @media (max-width: 640px) {
+            .timeline-title {
+                font-size: 1.1rem;
+            }
+        }
+        
+        .timeline-content {
+            color: var(--text-secondary);
+            line-height: 1.7;
+        }
+        
+        .contact-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 1.25rem;
+            margin-top: 3rem;
+        }
+        
+        @media (max-width: 640px) {
+            .contact-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+        
+        .contact-card {
+            padding: 1.75rem;
+            text-align: center;
+        }
+        
+        .contact-label {
+            color: var(--text-secondary);
+            font-size: 0.875rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 0.75rem;
+        }
+        
+        .contact-value {
+            font-size: 1.125rem;
+            font-weight: 600;
+        }
+        
+        .contact-value a {
+            color: var(--text-primary);
+            text-decoration: none;
+            transition: color 0.3s;
+            -webkit-tap-highlight-color: transparent;
+        }
+        
+        .contact-value a:hover {
+            color: var(--primary);
+        }
+        
+        footer {
+            padding: 3rem 0;
+            text-align: center;
+            border-top: 1px solid var(--glass-border);
+            color: var(--text-secondary);
+        }
+        
+        @media (max-width: 768px) {
+            .nav-links {
+                position: fixed;
+                top: 0;
+                right: -100%;
+                height: 100vh;
+                width: 80%;
+                max-width: 300px;
+                flex-direction: column;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                -webkit-backdrop-filter: blur(20px);
+                padding: 5rem 2rem;
+                transition: right 0.3s;
+                border-left: 1px solid var(--glass-border);
+                gap: 0;
+                box-shadow: -4px 0 12px rgba(60, 64, 67, 0.15);
             }
             
-            .ventures, .books-grid, .goals {
-                grid-template-columns: 1fr;
+            .nav-links li {
+                width: 100%;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 1rem 0;
+                font-size: 1.1rem;
+                border-bottom: 1px solid var(--glass-border);
+            }
+            
+            .nav-links.active {
+                right: 0;
+            }
+            
+            .menu-toggle {
+                display: flex;
+            }
+            
+            .menu-toggle.active span:nth-child(1) {
+                transform: rotate(45deg) translate(6px, 6px);
+            }
+            
+            .menu-toggle.active span:nth-child(2) {
+                opacity: 0;
+            }
+            
+            .menu-toggle.active span:nth-child(3) {
+                transform: rotate(-45deg) translate(6px, -6px);
+            }
+            
+            .timeline::before {
+                left: 0;
+            }
+            
+            .timeline-item {
+                padding-left: 2rem;
+            }
+            
+            .timeline-item::before {
+                left: -7px;
+            }
+            
+            .container {
+                padding: 0 1rem;
+            }
+            
+            section {
+                padding: 3rem 0;
+            }
+            
+            header {
+                padding: 5rem 1rem 3rem;
+                min-height: 90vh;
             }
         }
     </style>
 </head>
 <body>
+    <nav>
+        <div class="nav-container">
+            <div class="logo">MM</div>
+            <ul class="nav-links">
+                <li><a href="#about">About</a></li>
+                <li><a href="#ventures">Ventures</a></li>
+                <li><a href="#experience">Experience</a></li>
+                <li><a href="#skills">Skills</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+            <div class="menu-toggle">
+                <span></span>
+                <span></span>
+                <span></span>
+            </div>
+        </div>
+    </nav>
 
     <header>
-        <div class="container">
+        <div class="hero-content">
+            <div class="hero-label">Co-Founder, COO & CFO at Sisonke Edutech</div>
             <h1>Mawethu Mpande</h1>
-            <p class="subtitle">Entrepreneur • Author • Tutor • Visionary</p>
-            <div class="tagline">"Making Difference Everyday"</div>
+            <p class="hero-subtitle">Educational Technology Leader & Creative Business Strategist</p>
+            <a href="#contact" class="cta-button">Get In Touch</a>
         </div>
     </header>
 
     <main class="container">
-
-        <section>
-            <h2>The Vision</h2>
-            <p>
-                Driven by a philosophy of <span class="highlight">Empowerment, Innovation, and Integrity</span>, my long-term goal is to build a multi-division business group with continental retail reach, mirroring the scale and impact of companies like <span class="highlight">Pep Stores and Samsung</span>.
-            </p>
+        <section id="about">
+            <div class="section-header">
+                <h2>About</h2>
+            </div>
             
-            <div class="goals">
-                <div class="goal-card">
-                    <h3>Short-Term Goal</h3>
-                    <div class="goal-amount">R50,000</div>
-                    <p style="margin: 0; font-size: 0.85rem; color: #909090;">per month via Tutoring, Clothing, Books</p>
+            <div class="glass-card" style="max-width: 900px; margin: 0 auto; padding: 2.5rem;">
+                <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem;">
+                    Co-Founder, COO & CFO of <strong style="color: var(--accent);">Sisonke Edutech</strong>, a private education technology company in South Africa focused on innovative learning solutions and digital education access.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem;">
+                    In this dual leadership role, Mawethu drives operational excellence, financial governance, and sustainable growth — optimizing internal processes while shaping financial strategy to ensure measurable performance and long-term scalability.
+                </p>
+                <p style="color: var(--text-secondary); line-height: 1.9;">
+                    Beyond Sisonke Edutech, Mawethu offers tutoring, CV writing, graphic design, and digital business solutions — empowering dozens of clients to grow their careers and businesses through education and professional services.
+                </p>
+            </div>
+            
+            <div class="glass-card" style="max-width: 900px; margin: 3rem auto 0; padding: 2.5rem;">
+                <h3 style="font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; margin-bottom: 1.5rem; color: var(--accent);">Quick Facts</h3>
+                <div style="display: grid; gap: 1rem; color: var(--text-secondary); line-height: 1.9;">
+                    <div><strong style="color: var(--text-primary);">Full Name:</strong> Mawethu Mpande</div>
+                    <div><strong style="color: var(--text-primary);">Current Role:</strong> Co-Founder, COO & CFO — Sisonke Edutech</div>
+                    <div><strong style="color: var(--text-primary);">Industries:</strong> EdTech, Entrepreneurship, Digital Services, Design & Education</div>
+                    <div><strong style="color: var(--text-primary);">Core Strengths:</strong> Operational leadership, financial strategy, business development, education empowerment, creative services</div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ventures">
+            <div class="section-header">
+                <h2>Leadership & Ventures</h2>
+            </div>
+            
+            <div style="max-width: 900px; margin: 0 auto 3rem;">
+                <div class="glass-card" style="padding: 2.5rem; border: 2px solid var(--accent);">
+                    <h3 class="venture-title" style="font-size: 2rem;">Sisonke Edutech</h3>
+                    <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">Co-Founder, COO & CFO</p>
+                    <p class="venture-description">
+                        Private education technology company in South Africa focused on innovative learning solutions and digital education access. Leading operations, finance, and strategic growth.
+                    </p>
+                </div>
+            </div>
+            
+            <h3 style="font-family: 'Syne', sans-serif; font-size: 1.75rem; font-weight: 700; text-align: center; margin-bottom: 2rem; color: var(--text-secondary);">Additional Services</h3>
+            
+            <div class="ventures-grid">
+                <div class="glass-card venture-card">
+                    <h3 class="venture-title">Mathematics Tutoring</h3>
+                    <p class="venture-description">Physical and online tutoring for Grades 4-12 with proven results and personalized instruction.</p>
                 </div>
                 
-                <div class="goal-card">
-                    <h3>Long-Term Target</h3>
-                    <div class="goal-amount">R2M</div>
-                    <p style="margin: 0; font-size: 0.85rem; color: #909090;">revenue within 4 years</p>
+                <div class="glass-card venture-card">
+                    <h3 class="venture-title">Professional Documents</h3>
+                    <p class="venture-description">CV writing, business profiles, and company profiles that help clients stand out.</p>
+                </div>
+                
+                <div class="glass-card venture-card">
+                    <h3 class="venture-title">Design Services</h3>
+                    <p class="venture-description">Business ad posters, logos, and branding that elevate your professional presence.</p>
+                </div>
+                
+                <div class="glass-card venture-card">
+                    <h3 class="venture-title">Application Assistance</h3>
+                    <p class="venture-description">Job applications and tertiary applications for students applying to TVET Colleges and Universities.</p>
+                </div>
+                
+                <div class="glass-card venture-card">
+                    <h3 class="venture-title">Retail & E-Commerce</h3>
+                    <p class="venture-description">Fashion accessories including sunglasses, perfumes, and lifestyle products with local delivery.</p>
+                </div>
+                
+                <div class="glass-card venture-card">
+                    <h3 class="venture-title">Tech & IT Support</h3>
+                    <p class="venture-description">Network maintenance and technical assistance for educational and commercial projects.</p>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2>Core Ventures</h2>
+        <section id="experience">
+            <div class="section-header">
+                <h2>Professional Journey</h2>
+            </div>
             
-            <div class="ventures">
-                <div class="venture-card">
-                    <div class="venture-title">Maths Tutoring</div>
-                    <p class="venture-desc">Physical & Online sessions for Grades 4–12, focusing on exam preparation and personalized support.</p>
-                    <p class="venture-note">→ Expanding via delegation to expert tutors</p>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2023 - Present</div>
+                    <h3 class="timeline-title">Co-Founder, COO & CFO — Sisonke Edutech</h3>
+                    <p class="timeline-content">Leading operations and finance for an EdTech company delivering innovative learning solutions across South Africa.</p>
                 </div>
-
-                <div class="venture-card">
-                    <div class="venture-title">Professional Documents</div>
-                    <p class="venture-desc">High-quality CV & Cover Letter packages: R50 per CV, R25 per Cover Letter</p>
-                    <p class="venture-note">→ Capacity: 5–6 CVs per day</p>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2022 - Present</div>
+                    <h3 class="timeline-title">Mathematics Tutor</h3>
+                    <p class="timeline-content">In-person tutoring in Ugie, supporting learners from primary to high school.</p>
                 </div>
-
-                <div class="venture-card">
-                    <div class="venture-title">Retail Ventures</div>
-                    <p class="venture-desc">Clothing brand and affordable products via WhatsApp Business and e-commerce platforms.</p>
-                    <p class="venture-note">→ Temu, AliExpress integration</p>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2020 - 2023</div>
+                    <h3 class="timeline-title">IT Support Specialist</h3>
+                    <p class="timeline-content">Technical troubleshooting and network maintenance for educational and commercial clients.</p>
                 </div>
-
-                <div class="venture-card">
-                    <div class="venture-title">Tech & Design</div>
-                    <p class="venture-desc">Graphic Design, Web Development, Digital Marketing & Computer Repair.</p>
-                    <p class="venture-note">→ AI tools budget: R1,500–R2,000/month</p>
+                
+                <div class="timeline-item">
+                    <div class="timeline-date">2018 - 2020</div>
+                    <h3 class="timeline-title">Educational Instructor</h3>
+                    <p class="timeline-content">Classroom management and lesson development focused on student engagement.</p>
                 </div>
             </div>
         </section>
 
-        <section>
-            <h2>Author & Devotional Focus</h2>
+        <section id="skills">
+            <div class="section-header">
+                <h2>Core Competencies</h2>
+            </div>
             
-            <div class="books-grid">
-                <div>
-                    <div class="book-item">
-                        <div class="book-title">The Rhythm of a Pen</div>
-                        <div class="book-desc">50-poem collection</div>
-                    </div>
-                    
-                    <div class="book-item">
-                        <div class="book-title">Known By Jesus</div>
-                        <div class="book-desc">100-day devotional</div>
-                    </div>
-                    
-                    <div class="book-item">
-                        <div class="book-title">Don't Make the Mistake</div>
-                        <div class="book-desc">Christology/Eschatology devotional</div>
+            <div class="skills-grid">
+                <div class="skill-tag">Operational Leadership</div>
+                <div class="skill-tag">Financial Strategy</div>
+                <div class="skill-tag">Business Development</div>
+                <div class="skill-tag">EdTech Innovation</div>
+                <div class="skill-tag">IT Support</div>
+                <div class="skill-tag">Mathematics Tutoring</div>
+                <div class="skill-tag">CV Writing</div>
+                <div class="skill-tag">Business Profiles</div>
+                <div class="skill-tag">Logo Design</div>
+                <div class="skill-tag">Poster Design</div>
+                <div class="skill-tag">Application Assistance</div>
+                <div class="skill-tag">Graphic Design</div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="section-header">
+                <h2>Let's Connect</h2>
+            </div>
+            
+            <div class="contact-grid">
+                <div class="glass-card contact-card">
+                    <div class="contact-label">Email</div>
+                    <div class="contact-value">
+                        <a href="/cdn-cgi/l/email-protection#97fae7f6f9f3f2faf6e0f2e3ffe2afa5a2d7f0faf6fefbb9f4f8fa"><span class="__cf_email__" data-cfemail="c0adb0a1aea4a5ada1b7a5b4a8b5f8f2f580a7ada1a9aceea3afad">[email&#160;protected]</span></a>
                     </div>
                 </div>
                 
-                <div class="spiritual-box">
-                    <h3 style="margin-top: 0;">Spiritual Alignment</h3>
-                    <p style="margin: 0; font-size: 0.9rem;">Writing centers on Seventh-day Adventist beliefs, integrating devotional prayers, practical applications, and biblical interpretations of prophecy, including a book on the holiness of sex.</p>
+                <div class="glass-card contact-card">
+                    <div class="contact-label">Phone</div>
+                    <div class="contact-value">
+                        <a href="tel:+27815228419">+27 81 522 8419</a>
+                    </div>
+                </div>
+                
+                <div class="glass-card contact-card">
+                    <div class="contact-label">WhatsApp</div>
+                    <div class="contact-value">
+                        <a href="https://wa.me/27815228419" target="_blank">Chat on WhatsApp</a>
+                    </div>
+                </div>
+                
+                <div class="glass-card contact-card">
+                    <div class="contact-label">Facebook</div>
+                    <div class="contact-value">
+                        <a href="https://www.facebook.com/disover.jesus/" target="_blank">disover.jesus</a>
+                    </div>
+                </div>
+                
+                <div class="glass-card contact-card">
+                    <div class="contact-label">Location</div>
+                    <div class="contact-value">Ugie, Eastern Cape, 5470, South Africa</div>
                 </div>
             </div>
         </section>
-
-        <section>
-            <h2>Operational Focus & Discipline</h2>
-            
-            <div class="schedule-box">
-                <h3 style="margin: 0 0 0.5rem 0;">Work Schedule</h3>
-                <p style="margin: 0;">Structured to balance university, business, and free time, generally operating from <span class="strong">11:00 AM – 12:00 AM</span>.</p>
-            </div>
-            
-            <div class="sabbath-box">
-                <h3 style="margin: 0 0 0.5rem 0; color: #dc2626;">Sabbath Commitment</h3>
-                <p style="margin: 0;">Work is strictly off-limits from <span style="color: #dc2626; font-weight: 600;">Friday sunset to Saturday sunset</span>, prioritizing spiritual reflection and rest.</p>
-            </div>
-            
-            <div class="schedule-box">
-                <h3 style="margin: 0 0 0.5rem 0;">Growth Strategy</h3>
-                <p style="margin: 0;">Prioritizing delegation and scaling the team (currently one assistant, planning three more tutors) to achieve higher impact and income without compromising quality.</p>
-            </div>
-        </section>
-
     </main>
 
     <footer>
         <div class="container">
-            <p>&copy; <span id="year"></span> Mawethu Mpande. All Rights Reserved.</p>
-            <p style="font-size: 0.85rem;">📍 South Africa</p>
-            <p style="font-size: 0.8rem; font-style: italic;">Committed to Christ-centered living and entrepreneurial excellence.</p>
+            <p>&copy; 2026 Mawethu Mpande. All Rights Reserved.</p>
+            <p style="margin-top: 0.5rem; font-size: 0.875rem;">Educational Technology Leader & Creative Business Strategist</p>
         </div>
     </footer>
 
-    <script>
-        document.getElementById('year').textContent = new Date().getFullYear();
-    </script>
-</body>
-</html>
+    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+        const menuToggle = document.querySelector('.menu-toggle');
+        const navLinks = document.querySelector('.nav-links');
+        
+        menuToggle.addEventListener('click', () => {
+            menuToggle.classList.toggle('active');
+            navLinks.classList.toggle('active');
+        });
+        
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                menuToggle.classList.remove('active');
+                navLinks.classList.remove('active');
+            });
+        });
+        
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -100px 0px'
+        };
+        
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+        
+        document.querySelectorAll('section').forEach(section => {
