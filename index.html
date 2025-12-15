@@ -185,6 +185,7 @@
         header {
             min-height: 100vh;
             display: flex;
+            flex-direction: column; /* Changed to column to stack elements */
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -195,6 +196,31 @@
         .hero-content {
             animation: fadeInUp 1s ease;
         }
+
+        /* NEW STYLE: Profile Image */
+        .profile-image-container {
+            width: 180px;
+            height: 180px;
+            margin-bottom: 2.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid var(--primary);
+            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.2);
+            position: relative;
+            z-index: 10;
+        }
+
+        .profile-image {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s ease;
+        }
+
+        .profile-image:hover {
+            transform: scale(1.05);
+        }
+        /* END NEW STYLE */
         
         @keyframes fadeInUp {
             from {
@@ -638,6 +664,9 @@
     </div>
 
     <header>
+        <div class="profile-image-container">
+            <img src="YOUR_DIRECT_IMAGE_URL_HERE" alt="Mawethu Mpande Professional Headshot" class="profile-image">
+        </div>
         <div class="hero-content">
             <div class="hero-label">Co-Founder, COO & CFO at Sisonke EduTech</div>
             <h1>Mawethu Mpande</h1>
@@ -815,80 +844,16 @@
                             <svg width="48" height="48" viewBox="0 0 24 24" fill="currentColor" style="color: #1877f2;">
                                 <path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/>
                             </svg>
+                            <span>/disover.jesus/</span>
                         </a>
-                    </div>
-                </div>
-                
-                <div class="glass-card contact-card">
-                    <div class="contact-label">Location</div>
-                    <div class="contact-value">
-                        <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 0.5rem;">
-                            <path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"></path>
-                            <circle cx="12" cy="10" r="3"></circle>
-                        </svg>
-                        <span style="font-size: 0.95rem;">Ugie, Eastern Cape, 5470, South Africa</span>
                     </div>
                 </div>
             </div>
         </section>
+
+        <footer>
+            &copy; 2025 Mawethu Mpande. All rights reserved.
+        </footer>
     </main>
-
-    <footer>
-        <div class="container">
-            <p>&copy; 2026 Mawethu Mpande. All Rights Reserved.</p>
-            <p style="margin-top: 0.5rem; font-size: 0.875rem;">Educational Technology Leader & Creative Business Strategist</p>
-        </div>
-    </footer>
-
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        const menuToggle = document.querySelector('.menu-toggle');
-        const navLinks = document.querySelector('.nav-links');
-        
-        menuToggle.addEventListener('click', () => {
-            menuToggle.classList.toggle('active');
-            navLinks.classList.toggle('active');
-        });
-        
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                menuToggle.classList.remove('active');
-                navLinks.classList.remove('active');
-            });
-        });
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -100px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-        
-        document.querySelectorAll('section').forEach(section => {
-            section.style.opacity = '0';
-            section.style.transform = 'translateY(30px)';
-            section.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
-            observer.observe(section);
-        });
-        
-        // Mobile nav smooth scroll
-        document.querySelectorAll('.mobile-nav-item').forEach(item => {
-            item.addEventListener('click', (e) => {
-                const target = item.getAttribute('href');
-                if (target.startsWith('#')) {
-                    e.preventDefault();
-                    document.querySelector(target).scrollIntoView({
-                        behavior: 'smooth'
-                    });
-                }
-            });
-        });
-    </script>
 </body>
 </html>
