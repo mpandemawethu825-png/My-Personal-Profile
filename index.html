@@ -185,7 +185,7 @@
         header {
             min-height: 100vh;
             display: flex;
-            flex-direction: column; /* Changed to column to stack elements */
+            flex-direction: column; 
             align-items: center;
             justify-content: center;
             text-align: center;
@@ -197,30 +197,36 @@
             animation: fadeInUp 1s ease;
         }
 
-        /* NEW STYLE: Profile Image */
-        .profile-image-container {
-            width: 180px;
-            height: 180px;
-            margin-bottom: 2.5rem;
-            border-radius: 50%;
-            overflow: hidden;
-            border: 4px solid var(--primary);
+        /* UPDATED: Canva Embed Container Styling for Responsiveness */
+        .canva-embed-container {
+            width: 80%; /* Start with a relative width */
+            max-width: 180px; /* Constrain size for a typical headshot on larger screens */
+            
+            /* Aspect ratio handling */
+            height: 0;
+            padding-top: 100%; /* Fallback for square aspect ratio */
+            aspect-ratio: 1 / 1; /* Modern way to set aspect ratio */
+            
             box-shadow: 0 4px 15px rgba(66, 133, 244, 0.2);
+            margin: 0 auto 2.5em auto; /* Center it and add bottom margin */
+            overflow: hidden;
+            border-radius: 50%; /* Make it circular */
+            border: 4px solid var(--primary);
             position: relative;
             z-index: 10;
         }
 
-        .profile-image {
+        .canva-embed-container iframe {
+            position: absolute;
             width: 100%;
             height: 100%;
-            object-fit: cover;
-            transition: transform 0.3s ease;
+            top: 0;
+            left: 0;
+            border: none;
+            padding: 0;
+            margin: 0;
         }
-
-        .profile-image:hover {
-            transform: scale(1.05);
-        }
-        /* END NEW STYLE */
+        /* END UPDATED STYLE */
         
         @keyframes fadeInUp {
             from {
@@ -570,6 +576,14 @@
         }
         
         @media (max-width: 768px) {
+            /* Mobile-specific adjustments for the image container */
+            .canva-embed-container {
+                width: 150px; 
+                max-width: 150px;
+                height: 150px;
+                padding-top: 0; 
+            }
+
             .nav-links {
                 display: none;
             }
@@ -664,8 +678,13 @@
     </div>
 
     <header>
-        <div class="profile-image-container">
-            <img src="YOUR_DIRECT_IMAGE_URL_HERE" alt="Mawethu Mpande Professional Headshot" class="profile-image">
+        <div class="canva-embed-container">
+            <iframe loading="lazy" 
+              src="https://www.canva.com/design/DAG7nw7QtQU/iREo6Sj2oxOAt4qh2gPYYg/view?embed" 
+              allowfullscreen="allowfullscreen" 
+              allow="fullscreen"
+              title="Mawethu Mpande Profile Image">
+            </iframe>
         </div>
         <div class="hero-content">
             <div class="hero-label">Co-Founder, COO & CFO at Sisonke EduTech</div>
@@ -818,7 +837,7 @@
                     <div class="contact-value">
                         <a href="tel:+27714217169">
                             <svg width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" style="display: block; margin: 0 auto 0.5rem;">
-                                <path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
+                                <path d="M22 16.92v3a2 2 2 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path>
                             </svg>
                             <span>071 421 7169</span>
                         </a>
