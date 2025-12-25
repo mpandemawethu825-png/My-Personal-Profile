@@ -2,370 +2,201 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="theme-color" content="#ffffff">
-    <meta name="apple-mobile-web-app-capable" content="yes">
-    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+    <meta name="theme-color" content="#4285f4">
     <title>Mawethu Mpande – COO & CFO at Sisonke EduTech</title>
-    
-    <meta name="description" content="Mawethu Mpande – Co-Founder, COO & CFO at Sisonke EduTech. Educational technology leader, entrepreneur, and creative business strategist driving innovation in EduTech and digital services.">
-    <meta name="keywords" content="Mawethu Mpande, Sisonke EduTech, EduTech leader, COO CFO, entrepreneur South Africa, education technology">
     
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@400;600;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
     
     <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
+        /* CRITICAL CSS FOR INSTANT LOAD */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
-            --primary: #4285f4;
-            --accent: #0f9d58;
-            --red: #ea4335;
-            --yellow: #fbbc04;
-            --bg-light: #ffffff;
-            --bg-surface: #f8f9fa;
-            --glass: rgba(255, 255, 255, 0.9);
-            --glass-border: rgba(0, 0, 0, 0.08);
-            --text-primary: #202124;
-            --text-secondary: #5f6368;
-            --shadow: 0 1px 3px rgba(60, 64, 67, 0.3);
-            --shadow-hover: 0 4px 12px rgba(60, 64, 67, 0.2);
+            --primary: #4285f4; --accent: #0f9d58; --bg-light: #ffffff;
+            --bg-surface: #f8f9fa; --glass: rgba(255, 255, 255, 0.9);
+            --glass-border: rgba(0, 0, 0, 0.08); --text-primary: #202124;
+            --text-secondary: #5f6368; --shadow: 0 1px 3px rgba(60,64,67,0.3);
         }
-
         html { scroll-behavior: smooth; }
-
         body {
-            font-family: 'DM Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-            background: var(--bg-light);
-            color: var(--text-primary);
-            line-height: 1.6;
-            overflow-x: hidden;
+            font-family: 'DM Sans', sans-serif; background: var(--bg-light);
+            color: var(--text-primary); line-height: 1.6; overflow-x: hidden;
             -webkit-font-smoothing: antialiased;
-            -moz-osx-font-smoothing: grayscale;
-            touch-action: manipulation;
+        }
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 1.5rem; position: relative; z-index: 1; }
+
+        /* PERFORMANCE: Fixed height container prevents layout jumping */
+        header {
+            min-height: 100vh; display: flex; flex-direction: column; 
+            align-items: center; justify-content: center; text-align: center;
+            padding: 4rem 1.5rem;
         }
 
-        body::before {
-            content: '';
-            position: fixed;
-            top: 0; left: 0; width: 100%; height: 100%;
-            background: 
-                radial-gradient(circle at 15% 20%, rgba(66, 133, 244, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 85% 80%, rgba(15, 157, 88, 0.08) 0%, transparent 40%),
-                radial-gradient(circle at 50% 50%, rgba(251, 188, 4, 0.05) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(234, 67, 53, 0.06) 0%, transparent 40%);
-            pointer-events: none;
-            z-index: 0;
+        .canva-embed-container {
+            width: 180px; height: 180px; margin: 0 auto 2rem;
+            border-radius: 50%; border: 4px solid var(--primary);
+            overflow: hidden; position: relative; background: #eee;
+            box-shadow: var(--shadow);
         }
-
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 1.5rem;
-            position: relative;
-            z-index: 1;
+        .canva-embed-container iframe {
+            position: absolute; width: 100%; height: 100%; top: 0; left: 0; border: none;
         }
 
         nav {
-            position: fixed;
-            top: 0; width: 100%;
-            backdrop-filter: blur(20px);
-            background: rgba(255, 255, 255, 0.95);
-            border-bottom: 1px solid var(--glass-border);
-            z-index: 1000;
-            animation: slideDown 0.5s ease;
-            -webkit-backdrop-filter: blur(20px);
-            box-shadow: 0 1px 3px rgba(60, 64, 67, 0.1);
+            position: fixed; top: 0; width: 100%; z-index: 1000;
+            background: rgba(255,255,255,0.95); backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px); border-bottom: 1px solid var(--glass-border);
         }
+        .nav-container { max-width: 1200px; margin: 0 auto; padding: 0.8rem 1.5rem; display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-family: 'Syne', sans-serif; font-weight: 800; font-size: 1.4rem; color: var(--primary); }
+        .nav-links { display: flex; gap: 1.5rem; list-style: none; }
+        .nav-links a { color: var(--text-secondary); text-decoration: none; font-size: 0.9rem; font-weight: 500; }
 
-        @keyframes slideDown { from { transform: translateY(-100%); } to { transform: translateY(0); } }
+        h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 1rem; }
+        .hero-label { display: inline-block; padding: 0.4rem 1rem; background: var(--bg-surface); border-radius: 50px; font-size: 0.85rem; font-weight: 600; margin-bottom: 1.5rem; border: 1px solid var(--glass-border); }
+        .cta-button { display: inline-block; padding: 0.9rem 2rem; background: var(--primary); color: white; text-decoration: none; border-radius: 50px; font-weight: 600; transition: 0.2s; }
 
-        .nav-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 1rem 1.5rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+        section { padding: 4rem 0; }
+        .glass-card { background: var(--glass); border: 1px solid var(--glass-border); border-radius: 18px; padding: 1.5rem; box-shadow: var(--shadow); transition: 0.3s; }
+        .ventures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 2.5rem; }
+        .venture-title { font-family: 'Syne', sans-serif; font-size: 1.3rem; color: var(--primary); margin-bottom: 0.5rem; }
 
-        .logo {
-            font-family: 'Syne', sans-serif;
-            font-weight: 800;
-            font-size: 1.5rem;
-            background: linear-gradient(135deg, var(--primary), var(--accent));
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-            background-clip: text;
-        }
+        .timeline { max-width: 800px; margin: 2rem auto; position: relative; padding-left: 1.5rem; border-left: 2px solid var(--primary); }
+        .timeline-item { margin-bottom: 2rem; position: relative; }
+        .timeline-item::before { content: ''; position: absolute; left: -1.95rem; top: 0.3rem; width: 12px; height: 12px; border-radius: 50%; background: var(--primary); }
 
-        .nav-links { display: flex; gap: 2rem; list-style: none; }
-        .nav-links a { color: var(--text-secondary); text-decoration: none; font-weight: 500; transition: color 0.3s; font-size: 0.95rem; }
-        .nav-links a:hover { color: var(--primary); }
+        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 2rem; }
+        .contact-card { text-align: center; padding: 2rem; }
+        .contact-card svg { margin-bottom: 1rem; fill: var(--primary); }
+        .contact-link { text-decoration: none; color: inherit; display: block; }
+        .contact-link:hover { color: var(--primary); }
 
-        .mobile-nav {
-            display: none;
-            position: fixed;
-            bottom: 0; left: 0; right: 0;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-top: 1px solid var(--glass-border);
-            box-shadow: 0 -2px 10px rgba(60, 64, 67, 0.1);
-            z-index: 1000;
-            padding: 0.5rem 0;
-        }
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 0.75rem; margin-top: 2rem; justify-content: center; }
+        .skill-tag { padding: 0.6rem 1.2rem; background: var(--bg-surface); border: 1px solid var(--glass-border); border-radius: 10px; font-size: 0.85rem; font-weight: 600; }
 
-        .mobile-nav-grid { display: grid; grid-template-columns: repeat(5, 1fr); max-width: 600px; margin: 0 auto; }
-        .mobile-nav-item {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            padding: 0.75rem 0.5rem; text-decoration: none; color: var(--text-secondary);
-            font-size: 0.7rem; font-weight: 500; transition: all 0.3s; -webkit-tap-highlight-color: transparent;
-        }
-        .mobile-nav-item svg { width: 24px; height: 24px; margin-bottom: 0.25rem; stroke-width: 2; }
-
-        header {
-            min-height: 100vh;
-            display: flex; flex-direction: column; 
-            align-items: center; justify-content: center;
-            text-align: center; padding: 6rem 1.5rem 4rem; position: relative;
-        }
-
-        /* AMENDMENT: Fixed size for profile image to fix Edge stretching */
-        .canva-embed-container {
-            width: 180px; height: 180px;
-            box-shadow: 0 4px 15px rgba(66, 133, 244, 0.2);
-            margin: 0 auto 2.5em auto;
-            overflow: hidden;
-            border-radius: 50%;
-            border: 4px solid var(--primary);
-            position: relative;
-            z-index: 10;
-            background: var(--bg-surface);
-        }
-
-        .canva-embed-container iframe {
-            position: absolute; width: 100%; height: 100%;
-            top: 0; left: 0; border: none; padding: 0; margin: 0;
-        }
-
-        .hero-content { animation: fadeInUp 1s ease; }
-        @keyframes fadeInUp { from { opacity: 0; transform: translateY(30px); } to { opacity: 1; transform: translateY(0); } }
-
-        .hero-label {
-            display: inline-block; padding: 0.5rem 1.25rem;
-            background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 50px; font-size: 0.875rem; font-weight: 600;
-            letter-spacing: 0.5px; margin-bottom: 2rem; backdrop-filter: blur(10px);
-        }
-
-        h1 {
-            font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 8vw, 5rem);
-            font-weight: 800; line-height: 1.1; margin-bottom: 1.5rem;
-            background: linear-gradient(135deg, var(--text-primary), var(--accent));
-            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
-        }
-
-        .hero-subtitle { font-size: clamp(1.25rem, 3vw, 1.75rem); color: var(--text-secondary); margin-bottom: 3rem; font-weight: 500; }
-
-        .cta-button {
-            display: inline-block; padding: 1rem 2.5rem;
-            background: var(--primary); color: white; text-decoration: none;
-            border-radius: 50px; font-weight: 600; transition: all 0.3s;
-            box-shadow: var(--shadow); -webkit-tap-highlight-color: transparent;
-        }
-        .cta-button:hover { transform: translateY(-2px); box-shadow: 0 8px 20px rgba(66, 133, 244, 0.3); background: #5a95f5; }
-
-        section { padding: 5rem 0; }
-        .section-header { text-align: center; margin-bottom: 4rem; animation: fadeIn 1s ease; }
-        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-
-        h2 { font-family: 'Syne', sans-serif; font-size: clamp(2rem, 5vw, 3rem); font-weight: 700; margin-bottom: 1rem; }
-
-        .glass-card {
-            background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 20px; padding: 1.75rem; backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px); transition: all 0.3s; box-shadow: var(--shadow);
-        }
-        .glass-card:hover { border-color: var(--primary); box-shadow: var(--shadow-hover); transform: translateY(-2px); }
-
-        .ventures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
-        .venture-card { animation: fadeInUp 0.6s ease both; }
-        .venture-title { font-family: 'Syne', sans-serif; font-size: 1.5rem; font-weight: 700; color: var(--primary); margin-bottom: 1rem; }
-        .venture-description { color: var(--text-secondary); line-height: 1.8; }
-
-        .skills-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(160px, 1fr)); gap: 1rem; margin-top: 3rem; }
-        .skill-tag {
-            padding: 1rem 1.25rem; background: var(--glass); border: 1px solid var(--glass-border);
-            border-radius: 12px; text-align: center; font-weight: 600; transition: all 0.3s;
-            backdrop-filter: blur(10px); -webkit-backdrop-filter: blur(10px); font-size: 0.9rem;
-        }
-
-        .timeline { max-width: 800px; margin: 3rem auto 0; position: relative; padding-left: 1rem; }
-        .timeline::before {
-            content: ''; position: absolute; left: 0; top: 0; height: 100%; width: 3px;
-            background: linear-gradient(180deg, var(--primary), var(--accent)); border-radius: 3px;
-        }
-        .timeline-item { padding-left: 2.5rem; margin-bottom: 2.5rem; position: relative; animation: slideInLeft 0.6s ease both; }
-        .timeline-item::before {
-            content: ''; position: absolute; left: -7px; top: 0; width: 16px; height: 16px;
-            border-radius: 50%; background: var(--primary); box-shadow: 0 0 0 3px var(--bg-light), 0 0 10px rgba(66, 133, 244, 0.4);
-        }
-        .timeline-date { color: var(--primary); font-weight: 600; margin-bottom: 0.5rem; font-size: 0.875rem; }
-        .timeline-title { font-family: 'Syne', sans-serif; font-size: 1.25rem; font-weight: 700; margin-bottom: 0.5rem; color: var(--text-primary); }
-
-        .contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 1.25rem; margin-top: 3rem; }
-        .contact-card { padding: 1.75rem; text-align: center; }
-        .contact-label { color: var(--text-secondary); font-size: 0.875rem; font-weight: 600; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 0.75rem; }
-        .contact-value { font-size: 1.125rem; font-weight: 600; }
-        .contact-value a { color: var(--text-primary); text-decoration: none; transition: color 0.3s; -webkit-tap-highlight-color: transparent; }
-        .contact-value a:hover { color: var(--primary); }
-
-        footer { padding: 3rem 0; text-align: center; border-top: 1px solid var(--glass-border); color: var(--text-secondary); }
+        footer { padding: 2rem; text-align: center; font-size: 0.9rem; color: var(--text-secondary); border-top: 1px solid var(--glass-border); }
 
         @media (max-width: 768px) {
-            .canva-embed-container { width: 150px; height: 150px; }
             .nav-links { display: none; }
-            .mobile-nav { display: block; }
-            header { padding: 5rem 1rem 3rem; min-height: 90vh; }
-            body { padding-bottom: 70px; }
+            .canva-embed-container { width: 140px; height: 140px; }
+            section { padding: 3rem 0; }
         }
     </style>
 </head>
 <body>
-    <nav>
-        <div class="nav-container">
-            <div class="logo">MM</div>
-            <ul class="nav-links">
-                <li><a href="#about">About</a></li>
-                <li><a href="#ventures">Ventures</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
-        </div>
-    </nav>
 
-    <div class="mobile-nav">
-        <div class="mobile-nav-grid">
-            <a href="#about" class="mobile-nav-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
-                <span>About</span>
-            </a>
-            <a href="#ventures" class="mobile-nav-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"></rect><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"></path></svg>
-                <span>Ventures</span>
-            </a>
-            <a href="#experience" class="mobile-nav-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"></circle><polyline points="12 6 12 12 16 14"></polyline></svg>
-                <span>Journey</span>
-            </a>
-            <a href="#skills" class="mobile-nav-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"></path><polyline points="2 17 12 22 22 17"></polyline><polyline points="2 12 12 17 22 12"></polyline></svg>
-                <span>Skills</span>
-            </a>
-            <a href="#contact" class="mobile-nav-item">
-                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-                <span>Contact</span>
-            </a>
-        </div>
+<nav>
+    <div class="nav-container">
+        <div class="logo">MM</div>
+        <ul class="nav-links">
+            <li><a href="#about">About</a></li>
+            <li><a href="#ventures">Ventures</a></li>
+            <li><a href="#experience">Journey</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
     </div>
+</nav>
 
-    <header>
-        <div class="canva-embed-container">
-            <iframe loading="lazy" src="https://www.canva.com/design/DAG7nw7QtQU/iREo6Sj2oxOAt4qh2gPYYg/view?embed" title="Mawethu Mpande Profile Image"></iframe>
+<header>
+    <div class="canva-embed-container">
+        <iframe src="https://www.canva.com/design/DAG7nw7QtQU/iREo6Sj2oxOAt4qh2gPYYg/view?embed" title="Mawethu Mpande" loading="lazy"></iframe>
+    </div>
+    <div class="hero-label">Co-Founder, COO & CFO at Sisonke EduTech</div>
+    <h1>Mawethu Mpande</h1>
+    <p style="color: var(--text-secondary); margin-bottom: 2rem;">Educational Technology Leader & Creative Business Strategist</p>
+    <a href="#contact" class="cta-button">Get In Touch</a>
+</header>
+
+<main class="container">
+    <section id="about">
+        <h2 style="text-align:center; font-family:'Syne'; margin-bottom:2rem;">About</h2>
+        <div class="glass-card" style="max-width: 850px; margin: 0 auto;">
+            <p>Co-Founder, COO & CFO of <strong>Sisonke EduTech</strong>, a private education technology company in South Africa focused on innovative learning solutions and digital education access.</p>
+            <p style="margin-top: 1rem;">Mawethu drives operational excellence, financial governance, and sustainable growth, optimizing internal processes for scalability.</p>
         </div>
-        <div class="hero-content">
-            <div class="hero-label">Co-Founder, COO & CFO at Sisonke EduTech</div>
-            <h1>Mawethu Mpande</h1>
-            <p class="hero-subtitle">Educational Technology Leader & Creative Business Strategist</p>
-            <a href="#contact" class="cta-button">Get In Touch</a>
+    </section>
+
+    <section id="ventures">
+        <h2 style="text-align:center; font-family:'Syne';">Leadership & Ventures</h2>
+        <div class="ventures-grid">
+            <div class="glass-card">
+                <h3 class="venture-title">Sisonke EduTech</h3>
+                <p>Leading operations and finance for high-impact educational technology across South Africa.</p>
+            </div>
+            <div class="glass-card">
+                <h3 class="venture-title">Mathematics Tutoring</h3>
+                <p>Results-driven physical and online tutoring for Grades 4-12.</p>
+            </div>
+            <div class="glass-card">
+                <h3 class="venture-title">Creative Design</h3>
+                <p>Professional CVs, Company Profiles, Logos, and Branding solutions.</p>
+            </div>
+            <div class="glass-card">
+                <h3 class="venture-title">Tech Support</h3>
+                <p>IT troubleshooting and network maintenance for commercial projects.</p>
+            </div>
         </div>
-    </header>
+    </section>
 
-    <main class="container">
-        <section id="about">
-            <div class="section-header"><h2>About</h2></div>
-            <div class="glass-card" style="max-width: 900px; margin: 0 auto; padding: 2.5rem;">
-                <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem;">Co-Founder, COO & CFO of <strong style="color: var(--accent);">Sisonke EduTech</strong>, a private education technology company in South Africa focused on innovative learning solutions and digital education access.</p>
-                <p style="color: var(--text-secondary); line-height: 1.9; margin-bottom: 1.5rem;">In this dual leadership role, Mawethu drives operational excellence, financial governance, and sustainable growth — optimizing internal processes while shaping financial strategy.</p>
-                <p style="color: var(--text-secondary); line-height: 1.9;">Beyond Sisonke EduTech, Mawethu offers tutoring, CV writing, graphic design, and digital business solutions.</p>
+    <section id="experience">
+        <h2 style="text-align:center; font-family:'Syne';">Journey</h2>
+        <div class="timeline">
+            <div class="timeline-item">
+                <div style="color:var(--primary); font-weight:700;">2023 - Present</div>
+                <div style="font-weight:700;">Co-Founder, COO & CFO — Sisonke EduTech</div>
             </div>
-        </section>
+            <div class="timeline-item">
+                <div style="color:var(--primary); font-weight:700;">2022 - Present</div>
+                <div style="font-weight:700;">Mathematics Tutor</div>
+            </div>
+        </div>
+    </section>
 
-        <section id="ventures">
-            <div class="section-header"><h2>Leadership & Ventures</h2></div>
-            <div style="max-width: 900px; margin: 0 auto 3rem;">
-                <div class="glass-card" style="padding: 2.5rem; border: 2px solid var(--accent);">
-                    <h3 class="venture-title" style="font-size: 2rem;">Sisonke EduTech</h3>
-                    <p style="color: var(--accent); font-weight: 600; margin-bottom: 1rem;">Co-Founder, COO & CFO</p>
-                    <p class="venture-description">Private education technology company in South Africa focused on innovative learning solutions and digital education access. Leading operations, finance, and strategic growth.</p>
-                </div>
-            </div>
-            <div class="ventures-grid">
-                <div class="glass-card venture-card"><h3 class="venture-title">Mathematics Tutoring</h3><p class="venture-description">Physical and online tutoring for Grades 4-12 with proven results and personalized instruction.</p></div>
-                <div class="glass-card venture-card"><h3 class="venture-title">Professional Documents</h3><p class="venture-description">CV writing, business profiles, and company profiles that help clients stand out.</p></div>
-                <div class="glass-card venture-card"><h3 class="venture-title">Design Services</h3><p class="venture-description">Business ad posters, logos, and branding that elevate your professional presence.</p></div>
-                <div class="glass-card venture-card"><h3 class="venture-title">Application Assistance</h3><p class="venture-description">Job applications and tertiary applications for students applying to TVET Colleges and Universities.</p></div>
-            </div>
-        </section>
+    <section id="skills">
+        <h2 style="text-align:center; font-family:'Syne';">Skills</h2>
+        <div class="skills-grid">
+            <span class="skill-tag">Financial Strategy</span>
+            <span class="skill-tag">Operational Leadership</span>
+            <span class="skill-tag">EduTech Innovation</span>
+            <span class="skill-tag">Graphic Design</span>
+            <span class="skill-tag">IT Support</span>
+        </div>
+    </section>
 
-        <section id="experience">
-            <div class="section-header"><h2>Professional Journey</h2></div>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2023 - Present</div>
-                    <h3 class="timeline-title">Co-Founder, COO & CFO — Sisonke EduTech</h3>
-                    <p class="timeline-content">Leading operations and finance for an EduTech company delivering innovative learning solutions across South Africa.</p>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2022 - Present</div>
-                    <h3 class="timeline-title">Mathematics Tutor</h3>
-                    <p class="timeline-content">In-person tutoring supporting learners from primary to high school.</p>
-                </div>
+    <section id="contact">
+        <h2 style="text-align: center; font-family: 'Syne'; margin-bottom: 2rem;">Let's Connect</h2>
+        <div class="contact-grid">
+            
+            <div class="glass-card contact-card">
+                <a href="tel:+27714217169" class="contact-link">
+                    <svg width="40" height="40" viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
+                    <div><strong>Call Me</strong></div>
+                    <div style="color: var(--text-secondary);">071 421 7169</div>
+                </a>
             </div>
-        </section>
 
-        <section id="skills">
-            <div class="section-header"><h2>Core Competencies</h2></div>
-            <div class="skills-grid">
-                <div class="skill-tag">Operational Leadership</div>
-                <div class="skill-tag">Financial Strategy</div>
-                <div class="skill-tag">Business Development</div>
-                <div class="skill-tag">EduTech Innovation</div>
-                <div class="skill-tag">IT Support</div>
-                <div class="skill-tag">Graphic Design</div>
+            <div class="glass-card contact-card">
+                <a href="https://wa.me/27815228419" target="_blank" class="contact-link">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="#25D366"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.19-.3a8.132 8.132 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.24-8.24m-3.53 3.16c-.19.01-.43.07-.66.33-.24.25-1.01 1.05-1.01 2.57 0 1.51 1.1 2.98 1.24 3.18.14.2 2.17 3.32 5.27 4.66.74.32 1.31.51 1.76.65.74.24 1.41.21 1.94.12.59-.09 1.83-.75 2.09-1.47.25-.72.25-1.34.18-1.47-.08-.13-.28-.2-.58-.35s-1.77-.88-2.05-.98c-.27-.1-.47-.15-.67.15-.2.3-.77 1.05-.94 1.25-.17.19-.34.22-.64.07-1.15-.58-1.92-1.04-2.69-2.38-.2-.34.2-.31.57-1.04.11-.22.05-.41-.02-.56-.08-.15-.68-1.78-.93-2.39-.25-.6-.5-.52-.69-.53-.18-.01-.39-.01-.59-.01z"/></svg>
+                    <div><strong>WhatsApp</strong></div>
+                    <div style="color: var(--text-secondary);">Chat Now</div>
+                </a>
             </div>
-        </section>
 
-        <section id="contact">
-            <div class="section-header"><h2>Let's Connect</h2></div>
-            <div class="contact-grid">
-                <div class="glass-card contact-card">
-                    <div class="contact-label">Phone</div>
-                    <div class="contact-value"><a href="tel:+27714217169">071 421 7169</a></div>
-                </div>
-                <div class="glass-card contact-card">
-                    <div class="contact-label">WhatsApp</div>
-                    <div class="contact-value"><a href="https://wa.me/27815228419" target="_blank">Chat on WhatsApp</a></div>
-                </div>
-                <div class="glass-card contact-card">
-                    <div class="contact-label">Facebook</div>
-                    <div class="contact-value">
-                        <a href="https://www.facebook.com/share/1AZYumqwCu/" target="_blank">
-                            <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor" style="display:inline-block; vertical-align:middle; margin-right:5px; color:#1877f2;"><path d="M24 12.073c0-6.627-5.373-12-12-12s-12 5.373-12 12c0 5.99 4.388 10.954 10.125 11.854v-8.385H7.078v-3.47h3.047V9.43c0-3.007 1.792-4.669 4.533-4.669 1.312 0 2.686.235 2.686.235v2.953H15.83c-1.491 0-1.956.925-1.956 1.874v2.25h3.328l-.532 3.47h-2.796v8.385C19.612 23.027 24 18.062 24 12.073z"/></svg>
-                            <span>Visit Profile</span>
-                        </a>
-                    </div>
-                </div>
+            <div class="glass-card contact-card">
+                <a href="https://www.facebook.com/share/1AZYumqwCu/" target="_blank" class="contact-link">
+                    <svg width="40" height="40" viewBox="0 0 24 24" fill="#1877f2"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
+                    <div><strong>Facebook</strong></div>
+                    <div style="color: var(--text-secondary);">Visit Profile</div>
+                </a>
             </div>
-        </section>
-        <footer>&copy; 2025 Mawethu Mpande. All rights reserved.</footer>
-    </main>
+        </div>
+    </section>
+
+    <footer>&copy; 2025 Mawethu Mpande.</footer>
+</main>
+
 </body>
 </html>
