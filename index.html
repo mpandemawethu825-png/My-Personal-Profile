@@ -2,257 +2,595 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <meta name="theme-color" content="#0f172a">
-    <title>Mawethu Mpande – COO & CFO at Sisonke EduTech</title>
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Mawethu Mpande - COO & CFO | Sisonke EduTech</title>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Syne:wght@700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@200;300;400;500;600&family=Syne:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <style>
+        /* --- CSS STYLES --- */
         * { margin: 0; padding: 0; box-sizing: border-box; -webkit-tap-highlight-color: transparent; }
-        
+
         :root {
-            --google-blue: #4285F4;
-            --google-red: #EA4335;
-            --google-yellow: #FBBC05;
-            --google-green: #34A853;
-            --bg-dark: #0f172a;
-            --glass: rgba(255, 255, 255, 0.05);
+            /* Cyberpunk Palette */
+            --primary: #00f0ff;
+            --secondary: #ff00d4;
+            --accent: #9d4edd;
+            --dark-1: #0a0a12;
+            --dark-2: #12121f;
+            --dark-3: #1a1a2e;
+            --glass-bg: rgba(255, 255, 255, 0.05);
             --glass-border: rgba(255, 255, 255, 0.1);
-            --text-secondary: #94a3b8;
+            --glow-cyan: rgba(0, 240, 255, 0.4);
+            --glow-magenta: rgba(255, 0, 212, 0.4);
+            /* Brand Colors */
+            --whatsapp: #25D366;
+            --facebook: #1877F2;
         }
 
-        html { scroll-behavior: smooth; }
         body {
-            font-family: 'DM Sans', sans-serif;
-            background-color: var(--bg-dark);
+            font-family: 'Outfit', sans-serif;
+            background: var(--dark-1);
             color: #ffffff;
-            line-height: 1.6;
             overflow-x: hidden;
-            padding-bottom: 90px;
+            min-height: 100vh;
+            /* Prevent horizontal scroll on mobile */
+            width: 100%;
         }
 
-        .glow-bg {
-            position: fixed; width: 100vw; height: 100vh; z-index: -1;
-            background: 
-                radial-gradient(circle at 0% 0%, rgba(66, 133, 244, 0.12) 0%, transparent 50%),
-                radial-gradient(circle at 100% 100%, rgba(52, 168, 83, 0.08) 0%, transparent 50%),
-                radial-gradient(circle at 50% 50%, rgba(234, 67, 53, 0.05) 0%, transparent 50%);
+        /* Ambient Background */
+        .ambient-bg {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            pointer-events: none; z-index: 0; overflow: hidden;
         }
 
-        .container { max-width: 1000px; margin: 0 auto; padding: 0 1.25rem; }
-
-        /* Mobile Bottom Tabs */
-        .mobile-tabs {
-            position: fixed; bottom: 15px; left: 50%; transform: translateX(-50%);
-            width: 92%; max-width: 450px; height: 70px;
-            background: rgba(30, 41, 59, 0.7); backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
-            border-radius: 24px; border: 1px solid var(--glass-border);
-            display: flex; justify-content: space-around; align-items: center;
-            z-index: 2000; box-shadow: 0 15px 35px rgba(0,0,0,0.6);
+        .orb {
+            position: absolute; border-radius: 50%; filter: blur(80px);
+            animation: float 20s ease-in-out infinite;
         }
 
-        .tab-item { text-decoration: none; color: #94a3b8; display: flex; flex-direction: column; align-items: center; font-size: 0.7rem; font-weight: 600; transition: 0.3s; }
-        .tab-item svg { width: 24px; height: 24px; margin-bottom: 4px; stroke: currentColor; fill: none; stroke-width: 2; }
-        .tab-item:active { color: var(--google-blue); transform: scale(0.9); }
+        .orb-1 { width: 600px; height: 600px; background: radial-gradient(circle, var(--glow-cyan) 0%, transparent 70%); top: -200px; left: -200px; opacity: 0.6; }
+        .orb-2 { width: 500px; height: 500px; background: radial-gradient(circle, var(--glow-magenta) 0%, transparent 70%); bottom: -150px; right: -150px; opacity: 0.6; animation-delay: -7s; }
+
+        @keyframes float {
+            0%, 100% { transform: translate(0, 0) scale(1); }
+            50% { transform: translate(-30px, 50px) scale(0.95); }
+        }
+
+        /* Grid Overlay */
+        .grid-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background-image: linear-gradient(rgba(255, 255, 255, 0.03) 1px, transparent 1px), linear-gradient(90deg, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
+            background-size: 50px 50px; pointer-events: none; z-index: 1;
+        }
+
+        /* Loading Screen */
+        .loading-screen {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: var(--dark-1); z-index: 10000;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            transition: opacity 0.5s ease, visibility 0.5s ease;
+        }
+        .loading-screen.hidden { opacity: 0; visibility: hidden; }
+        .loader-ring {
+            width: 60px; height: 60px; position: relative;
+        }
+        .loader-ring::before, .loader-ring::after {
+            content: ''; position: absolute; border-radius: 50%; border: 3px solid transparent;
+        }
+        .loader-ring::before {
+            top: 0; left: 0; right: 0; bottom: 0; border-top-color: var(--primary); border-right-color: var(--primary);
+            animation: spin 1s linear infinite;
+        }
+        .loader-ring::after {
+            top: 8px; left: 8px; right: 8px; bottom: 8px; border-bottom-color: var(--secondary); border-left-color: var(--secondary);
+            animation: spin 0.6s linear infinite reverse;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+
+        /* Main Container */
+        .container {
+            position: relative; z-index: 10; padding: 20px 15px;
+            max-width: 1000px; margin: 0 auto; min-height: 100vh;
+            display: flex; flex-direction: column;
+        }
 
         /* Header */
-        header { min-height: 100vh; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 4rem 1.5rem; }
-
-        .profile-ring {
-            width: 180px; height: 180px; border-radius: 50%; padding: 4px;
-            background: linear-gradient(45deg, var(--google-blue), var(--google-red), var(--google-yellow), var(--google-green));
-            margin-bottom: 2rem; box-shadow: 0 0 30px rgba(66, 133, 244, 0.3);
+        .header {
+            text-align: center; margin-bottom: 40px; margin-top: 20px;
+            opacity: 0; animation: fadeUp 0.8s ease-out 0.5s forwards;
         }
-        .canva-container { width: 100%; height: 100%; border-radius: 50%; overflow: hidden; position: relative; background: #1e293b; }
-        .canva-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; border: none; }
+        @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } from { transform: translateY(20px); } }
 
-        h1 { font-family: 'Syne', sans-serif; font-size: clamp(2.5rem, 8vw, 4.5rem); line-height: 1.1; margin-bottom: 0.5rem; letter-spacing: -1px; }
-        .hero-tag { color: var(--google-blue); font-weight: 800; font-size: 0.9rem; letter-spacing: 2px; margin-bottom: 1.5rem; text-transform: uppercase; }
+        .logo { width: 70px; height: 70px; margin: 0 auto 15px; }
+        .logo svg { width: 100%; height: 100%; filter: drop-shadow(0 0 15px var(--glow-cyan)); }
 
-        /* Content Styles */
-        h2 { font-family: 'Syne', sans-serif; font-size: 2.2rem; margin-bottom: 1.5rem; text-align: center; }
-        h3 { font-family: 'Syne', sans-serif; color: var(--google-blue); margin-bottom: 1rem; }
-
-        .glass-card { 
-            background: var(--glass); border: 1px solid var(--glass-border); 
-            border-radius: 24px; padding: 2rem; margin-bottom: 2rem;
-            backdrop-filter: blur(15px); -webkit-backdrop-filter: blur(15px);
+        .brand-name {
+            font-family: 'Syne', sans-serif; font-size: 36px; font-weight: 700; letter-spacing: 1px; margin-bottom: 8px;
+            background: linear-gradient(135deg, var(--primary) 0%, #ffffff 50%, var(--secondary) 100%);
+            -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+            text-transform: uppercase; line-height: 1.1;
         }
+        .tagline { font-size: 12px; letter-spacing: 2px; color: rgba(255, 255, 255, 0.6); text-transform: uppercase; }
 
-        .ventures-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.25rem; }
+        /* Menu Grid - Mobile Optimized */
+        .menu-grid {
+            display: grid; grid-template-columns: repeat(2, 1fr); gap: 15px;
+            margin: 0 auto 40px; justify-content: center; max-width: 500px;
+        }
+        .menu-item {
+            aspect-ratio: 1/1; /* Keeps them square */
+            background: var(--glass-bg); backdrop-filter: blur(20px); -webkit-backdrop-filter: blur(20px);
+            border: 1px solid var(--glass-border); border-radius: 20px;
+            display: flex; flex-direction: column; justify-content: center; align-items: center;
+            cursor: pointer; position: relative; overflow: hidden; opacity: 0;
+            transform: translateY(30px) scale(0.9); transition: transform 0.2s, background 0.3s;
+        }
+        /* Mobile Active State (since hover doesn't exist on touch) */
+        .menu-item:active {
+            transform: scale(0.96); background: rgba(0, 240, 255, 0.1); border-color: var(--primary);
+        }
         
-        /* Skills Grid */
-        .skills-grid { display: flex; flex-wrap: wrap; gap: 10px; justify-content: center; margin-top: 1rem; }
-        .skill-tag { padding: 0.6rem 1.2rem; background: var(--glass); border: 1px solid var(--glass-border); border-radius: 12px; font-size: 0.85rem; font-weight: 600; }
+        .menu-item.visible { opacity: 1; transform: translateY(0) scale(1); }
+        .menu-item.initial-load { animation: menuAppear 0.5s ease-out forwards; }
+        .menu-item:nth-child(1) { animation-delay: 0.1s; }
+        .menu-item:nth-child(2) { animation-delay: 0.2s; }
+        .menu-item:nth-child(3) { animation-delay: 0.3s; }
+        .menu-item:nth-child(4) { animation-delay: 0.4s; }
+        .menu-item:nth-child(5) { animation-delay: 0.5s; }
+        .menu-item:nth-child(6) { animation-delay: 0.6s; }
+        @keyframes menuAppear { to { opacity: 1; transform: translateY(0) scale(1); } }
+
+        .menu-badge {
+            width: 50px; height: 50px; border-radius: 50%;
+            display: flex; justify-content: center; align-items: center;
+            font-family: 'Syne', sans-serif; font-size: 18px; font-weight: 700;
+            margin-bottom: 12px; background: linear-gradient(135deg, rgba(0, 240, 255, 0.15) 0%, rgba(255, 0, 212, 0.15) 100%);
+            border: 1px solid rgba(255, 255, 255, 0.1); color: var(--primary);
+            text-shadow: 0 0 20px var(--glow-cyan);
+        }
+        .menu-title { font-size: 11px; letter-spacing: 2px; text-transform: uppercase; color: rgba(255, 255, 255, 0.8); font-weight: 500; }
+
+        /* Content Sections */
+        .content-section { display: none; opacity: 0; padding-top: 20px; padding-bottom: 60px; }
+        .content-section.active { display: block; animation: sectionIn 0.4s ease-out forwards; }
+        @keyframes sectionIn { from { opacity: 0; transform: translateY(20px); } to { opacity: 1; transform: translateY(0); } }
+
+        /* Back Button - Mobile Optimized */
+        .back-btn-container {
+            position: sticky; top: 0; z-index: 100;
+            padding: 10px 0 20px 0; background: linear-gradient(to bottom, var(--dark-1) 0%, transparent 100%);
+            margin-bottom: 10px; display: flex; justify-content: space-between; align-items: center;
+        }
+        .back-btn {
+            padding: 10px 20px;
+            background: rgba(10, 10, 18, 0.8); backdrop-filter: blur(10px);
+            border: 1px solid var(--glass-border); border-radius: 50px;
+            color: var(--primary); font-family: 'Outfit', sans-serif; font-size: 14px; font-weight: 500;
+            cursor: pointer; display: flex; align-items: center; gap: 8px;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
+        }
+        .back-btn:active { transform: scale(0.95); background: rgba(0, 240, 255, 0.1); }
+
+        /* Headers within sections */
+        .section-title {
+            font-family: 'Syne', sans-serif; font-size: 32px; text-align: center; margin-bottom: 30px;
+            background: linear-gradient(to right, #fff, #aaa); -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+        }
+
+        /* Intro Section */
+        .intro-hero { display: flex; flex-direction: column-reverse; gap: 30px; margin-bottom: 40px; align-items: center; text-align: center; }
+        .intro-headline { font-family: 'Syne', sans-serif; font-size: 36px; line-height: 1.2; margin-bottom: 15px; }
+        .intro-headline span { color: var(--primary); }
+        
+        /* Responsive Profile Frame */
+        .profile-frame {
+            width: 260px; height: 260px; border-radius: 50%; overflow: hidden; margin: 0 auto;
+            border: 2px solid var(--primary); box-shadow: 0 0 30px var(--glow-cyan);
+            position: relative; background: #000;
+            /* Prevent iframe issues */
+            display: flex; justify-content: center; align-items: center;
+        }
+        .profile-frame iframe { 
+            width: 100%; height: 100%; border: none; 
+            transform: scale(1.05); /* Slight zoom to remove borders */
+        }
+
+        /* Glass Cards */
+        .glass-card {
+            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; padding: 25px 20px; margin-bottom: 15px;
+            backdrop-filter: blur(10px); position: relative;
+        }
+        .glass-card h3 { color: var(--primary); font-family: 'Syne', sans-serif; margin-bottom: 8px; font-size: 18px; }
+        .glass-card p { font-size: 14px; color: #ccc; line-height: 1.6; }
 
         /* Timeline */
-        .timeline { border-left: 2px solid var(--glass-border); padding-left: 1.5rem; margin-top: 2rem; }
-        .timeline-item { position: relative; margin-bottom: 2.5rem; }
-        .timeline-item::before { content: ''; position: absolute; left: -1.95rem; top: 0.5rem; width: 12px; height: 12px; border-radius: 50%; background: var(--google-yellow); box-shadow: 0 0 10px var(--google-yellow); }
-        .timeline-date { color: var(--google-blue); font-weight: 700; font-size: 0.9rem; }
-
-        /* Contact Section */
-        .contact-grid { display: grid; grid-template-columns: 1fr; gap: 1rem; }
-        .contact-btn { 
-            display: flex; align-items: center; padding: 1.5rem; 
-            text-decoration: none; color: white; border-radius: 20px; 
-            background: var(--glass); border: 1px solid var(--glass-border); transition: 0.3s;
+        .timeline-item { position: relative; padding-left: 25px; margin-bottom: 25px; border-left: 2px solid var(--glass-border); }
+        .timeline-item::before {
+            content: ''; position: absolute; left: -6px; top: 0; width: 10px; height: 10px; border-radius: 50%; background: var(--secondary);
+            box-shadow: 0 0 10px var(--glow-magenta);
         }
-        .contact-btn:active { transform: scale(0.98); background: rgba(255,255,255,0.1); }
-        .contact-btn svg { margin-right: 1.25rem; }
+        .timeline-date { color: var(--primary); font-size: 11px; font-weight: 700; margin-bottom: 4px; display: block; letter-spacing: 1px; }
 
+        /* Skills */
+        .skills-grid { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+        .skill-tag {
+            padding: 8px 14px; background: rgba(255,255,255,0.05); border: 1px solid var(--glass-border);
+            border-radius: 50px; font-size: 12px; color: #fff;
+        }
+
+        /* Contact Grid - Improved Icons */
+        .contact-grid { display: grid; grid-template-columns: 1fr; gap: 15px; margin-top: 20px; }
+        .contact-btn {
+            display: flex; align-items: center; padding: 20px; text-decoration: none; color: white;
+            background: var(--glass-bg); border: 1px solid var(--glass-border); border-radius: 16px; transition: 0.2s;
+        }
+        .contact-btn:active { background: rgba(255,255,255,0.1); transform: scale(0.98); }
+        
+        .icon-box {
+            width: 45px; height: 45px; display: flex; justify-content: center; align-items: center;
+            border-radius: 12px; margin-right: 15px; flex-shrink: 0;
+        }
+        .icon-box svg { width: 24px; height: 24px; fill: white; }
+
+        /* Specific Colors for Contact */
+        .contact-phone .icon-box { background: rgba(0, 240, 255, 0.2); }
+        .contact-phone svg { fill: var(--primary); }
+        
+        .contact-whatsapp .icon-box { background: rgba(37, 211, 102, 0.2); }
+        .contact-whatsapp svg { fill: var(--whatsapp); }
+
+        .contact-facebook .icon-box { background: rgba(24, 119, 242, 0.2); }
+        .contact-facebook svg { fill: var(--facebook); }
+
+        /* Media Queries for Larger Screens (Tablets/Desktops) */
         @media (min-width: 768px) {
+            .container { padding: 40px; max-width: 1200px; }
+            .brand-name { font-size: 52px; }
+            .menu-grid { grid-template-columns: repeat(3, 204px); max-width: 800px; gap: 25px; }
+            .menu-item { aspect-ratio: auto; height: 170px; }
+            .intro-hero { flex-direction: row; text-align: left; }
+            .intro-hero .intro-content { padding-right: 40px; }
             .contact-grid { grid-template-columns: repeat(3, 1fr); }
-            .contact-btn { flex-direction: column; text-align: center; }
-            .contact-btn svg { margin-right: 0; margin-bottom: 0.75rem; }
+            .contact-btn { flex-direction: column; text-align: center; padding: 30px; }
+            .icon-box { margin-right: 0; margin-bottom: 15px; width: 60px; height: 60px; }
+            .back-btn-container { position: relative; background: none; margin-bottom: 40px; }
+            .back-btn { position: absolute; right: 0; top: 0; }
         }
     </style>
 </head>
 <body>
 
-<div class="glow-bg"></div>
+    <div class="loading-screen" id="loadingScreen">
+        <div class="loader-ring"></div>
+        <div style="margin-top:20px; font-size:12px; letter-spacing:3px; color:var(--primary);">LOADING</div>
+    </div>
 
-<div class="mobile-tabs">
-    <a href="#" class="tab-item">
-        <svg viewBox="0 0 24 24"><path d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"/></svg>
-        Home
-    </a>
-    <a href="#about" class="tab-item">
-        <svg viewBox="0 0 24 24"><path d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"/></svg>
-        About
-    </a>
-    <a href="#ventures" class="tab-item">
-        <svg viewBox="0 0 24 24"><path d="M19 11H5m14 0a2 2 0 012 2v6a2 2 0 01-2 2H5a2 2 0 01-2-2v-6a2 2 0 012-2m14 0V9a2 2 0 00-2-2M5 11V9a2 2 0 012-2m0 0V5a2 2 0 012-2h6a2 2 0 012 2v2M7 7h10"/></svg>
-        Ventures
-    </a>
-    <a href="#contact" class="tab-item">
-        <svg viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg>
-        Contact
-    </a>
-</div>
+    <div class="ambient-bg">
+        <div class="orb orb-1"></div>
+        <div class="orb orb-2"></div>
+    </div>
+    <div class="grid-overlay"></div>
 
-<header>
-    <div class="profile-ring">
-        <div class="canva-container">
-            <iframe src="https://www.canva.com/design/DAG7nw7QtQU/iREo6Sj2oxOAt4qh2gPYYg/view?embed" title="Mawethu Mpande"></iframe>
+    <div class="container">
+        
+        <div class="header" id="mainHeader">
+            <div class="logo">
+                <svg viewBox="0 0 100 100" fill="none" stroke="url(#grad1)" stroke-width="3">
+                    <defs>
+                        <linearGradient id="grad1" x1="0%" y1="0%" x2="100%" y2="0%">
+                            <stop offset="0%" style="stop-color:#00f0ff" />
+                            <stop offset="100%" style="stop-color:#ff00d4" />
+                        </linearGradient>
+                    </defs>
+                    <path d="M20 80 L20 30 L50 60 L80 30 L80 80" stroke-linecap="round" stroke-linejoin="round"/>
+                </svg>
+            </div>
+            <h1 class="brand-name">Mawethu<br>Mpande</h1>
+            <p class="tagline">COO & CFO | Sisonke EduTech</p>
+        </div>
+
+        <div class="menu-grid" id="menuGrid">
+            <div class="menu-item initial-load" data-section="introduction">
+                <div class="menu-badge">HM</div>
+                <div class="menu-title">Home</div>
+            </div>
+            <div class="menu-item initial-load" data-section="services">
+                <div class="menu-badge">SV</div>
+                <div class="menu-title">Services</div>
+            </div>
+            <div class="menu-item initial-load" data-section="experience">
+                <div class="menu-badge">XP</div>
+                <div class="menu-title">Experience</div>
+            </div>
+            <div class="menu-item initial-load" data-section="skills">
+                <div class="menu-badge">SK</div>
+                <div class="menu-title">Skills</div>
+            </div>
+            <div class="menu-item initial-load" data-section="about">
+                <div class="menu-badge">AB</div>
+                <div class="menu-title">About</div>
+            </div>
+            <div class="menu-item initial-load" data-section="contact">
+                <div class="menu-badge">CT</div>
+                <div class="menu-title">Contact</div>
+            </div>
+        </div>
+
+        <div id="contentArea">
+
+            <div class="content-section" id="introduction">
+                <div class="back-btn-container">
+                    <button class="back-btn" onclick="backToMenu()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <div style="font-family:'Syne'; color:var(--primary); font-size:12px;">PROFILE</div>
+                </div>
+                
+                <div class="intro-hero">
+                    <div class="intro-content">
+                        <span style="color:var(--primary); font-size:12px; letter-spacing:2px; display:block; margin-bottom:10px; font-weight:600;">EDUTECH LEADER</span>
+                        <h1 class="intro-headline">Empowering<br>Education<br>Through<br><span>Technology</span></h1>
+                        <p style="color:rgba(255,255,255,0.7); line-height:1.6; margin-bottom:30px; font-size:15px;">
+                            Co-Founder, COO & CFO of Sisonke EduTech. Driving operational excellence and financial strategy in South African education.
+                        </p>
+                        <button class="contact-btn" style="width:100%; justify-content:center; background:var(--primary); border:none; color:black; font-weight:bold;" onclick="showSection('contact')">Let's Connect</button>
+                    </div>
+                    <div class="intro-visual">
+                        <div class="profile-frame">
+                            <iframe src="https://www.canva.com/design/DAG7nw7QtQU/iREo6Sj2oxOAt4qh2gPYYg/view?embed" title="Mawethu Mpande Profile"></iframe>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="services">
+                <div class="back-btn-container">
+                    <button class="back-btn" onclick="backToMenu()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <div style="font-family:'Syne'; color:var(--primary); font-size:12px;">SERVICES</div>
+                </div>
+
+                <h2 class="section-title">Ventures & Services</h2>
+                
+                <div class="glass-card" style="border-left: 4px solid var(--secondary);">
+                    <h3>Sisonke EduTech</h3>
+                    <p style="color: var(--primary); font-weight:bold; margin-bottom:10px; font-size:13px;">CO-FOUNDER, COO & CFO</p>
+                    <p>Private education technology company focused on innovative learning solutions and digital education access. Leading operations, finance, and strategic growth.</p>
+                </div>
+
+                <div class="glass-card">
+                    <h3>Mathematics Tutoring</h3>
+                    <p>Physical and online tutoring for Grades 4-12 with proven results and personalized instruction.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Design Services</h3>
+                    <p>Business ad posters, logos, and branding that elevate your professional presence.</p>
+                </div>
+                <div class="glass-card">
+                    <h3>Professional Docs</h3>
+                    <p>CV writing, business profiles, and company profiles that help clients stand out.</p>
+                </div>
+            </div>
+
+            <div class="content-section" id="experience">
+                <div class="back-btn-container">
+                    <button class="back-btn" onclick="backToMenu()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <div style="font-family:'Syne'; color:var(--primary); font-size:12px;">JOURNEY</div>
+                </div>
+
+                <h2 class="section-title">Professional Journey</h2>
+                
+                <div style="padding: 0 10px;">
+                    <div class="timeline-item">
+                        <span class="timeline-date">2023 - PRESENT</span>
+                        <h3 style="font-family:'Syne'; font-size:18px; color:#fff;">COO & CFO</h3>
+                        <p style="color:var(--primary); font-size:12px; margin-bottom:8px;">Sisonke EduTech</p>
+                        <p style="color:#ccc; font-size:14px;">Leading operations and finance for an EduTech company delivering innovative learning solutions across South Africa.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">2022 - PRESENT</span>
+                        <h3 style="font-family:'Syne'; font-size:18px; color:#fff;">Mathematics Tutor</h3>
+                        <p style="color:var(--primary); font-size:12px; margin-bottom:8px;">Freelance</p>
+                        <p style="color:#ccc; font-size:14px;">In-person tutoring supporting learners from primary to high school.</p>
+                    </div>
+                    <div class="timeline-item">
+                        <span class="timeline-date">2020 - 2023</span>
+                        <h3 style="font-family:'Syne'; font-size:18px; color:#fff;">IT Support Specialist</h3>
+                        <p style="color:#ccc; font-size:14px; margin-top:8px;">Technical troubleshooting and network maintenance for educational and commercial clients.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="skills">
+                <div class="back-btn-container">
+                    <button class="back-btn" onclick="backToMenu()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <div style="font-family:'Syne'; color:var(--primary); font-size:12px;">EXPERTISE</div>
+                </div>
+
+                <h2 class="section-title">Core Competencies</h2>
+                
+                <div class="glass-card" style="text-align:center;">
+                    <div class="skills-grid">
+                        <span class="skill-tag">Operational Leadership</span>
+                        <span class="skill-tag">Financial Strategy</span>
+                        <span class="skill-tag">Business Development</span>
+                        <span class="skill-tag">EduTech Innovation</span>
+                        <span class="skill-tag">IT Support</span>
+                        <span class="skill-tag">Mathematics Tutoring</span>
+                        <span class="skill-tag">CV Writing</span>
+                        <span class="skill-tag">Graphic Design</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="content-section" id="about">
+                <div class="back-btn-container">
+                    <button class="back-btn" onclick="backToMenu()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <div style="font-family:'Syne'; color:var(--primary); font-size:12px;">ABOUT</div>
+                </div>
+
+                <h2 class="section-title">About Me</h2>
+                <div class="glass-card">
+                    <p style="margin-bottom:20px;">
+                        I am the <strong style="color:var(--primary)">Co-Founder, COO & CFO</strong> of Sisonke EduTech. My passion lies in bridging the gap between education and technology in South Africa.
+                    </p>
+                    <p style="margin-bottom:20px;">
+                        In my dual leadership role, I drive operational excellence and financial governance, ensuring sustainable growth while optimizing internal processes.
+                    </p>
+                    <p>
+                        Beyond corporate leadership, I am deeply committed to individual empowerment, offering tutoring, design services, and professional consultation.
+                    </p>
+                </div>
+            </div>
+
+            <div class="content-section" id="contact">
+                <div class="back-btn-container">
+                    <button class="back-btn" onclick="backToMenu()">
+                        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M19 12H5M12 19l-7-7 7-7"/></svg>
+                        Back
+                    </button>
+                    <div style="font-family:'Syne'; color:var(--primary); font-size:12px;">CONTACT</div>
+                </div>
+
+                <h2 class="section-title">Let's Connect</h2>
+                
+                <div class="contact-grid">
+                    <a href="tel:+27714217169" class="contact-btn contact-phone">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M20.01 15.38c-1.23 0-2.42-.2-3.53-.56a.977.977 0 00-1.01.24l-1.57 1.97c-2.83-1.49-5.15-3.8-6.62-6.63l1.97-1.57c.23-.24.31-.56.25-.87-.38-1.1-1.26-1.57-1.26-1.57H4.5a1 1 0 00-1 1c0 9.39 7.61 17 17 17a1 1 0 001-1v-3.5a1 1 0 00-.49-.9z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="font-weight:bold; color:var(--primary); font-size:16px;">Call Me</div>
+                            <div style="font-size:13px; color:#ccc;">071 421 7169</div>
+                        </div>
+                    </a>
+
+                    <a href="https://wa.me/27815228419" target="_blank" class="contact-btn contact-whatsapp">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.19-.3a8.132 8.132 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.24-8.24m-3.53 3.16c-.19.01-.43.07-.66.33-.24.25-1.01 1.05-1.01 2.57 0 1.51 1.1 2.98 1.24 3.18.14.2 2.17 3.32 5.27 4.66.74.32 1.31.51 1.76.65.74.24 1.41.21 1.94.12.59-.09 1.83-.75 2.09-1.47.25-.72.25-1.34.18-1.47-.08-.13-.28-.2-.58-.35s-1.77-.88-2.05-.98c-.27-.1-.47-.15-.67.15-.2.3-.77 1.05-.94 1.25-.17.19-.34.22-.64.07-1.15-.58-1.92-1.04-2.69-2.38-.2-.34.2-.31.57-1.04.11-.22.05-.41-.02-.56-.08-.15-.68-1.78-.93-2.39-.25-.6-.5-.52-.69-.53-.18-.01-.39-.01-.59-.01z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="font-weight:bold; color:var(--whatsapp); font-size:16px;">WhatsApp</div>
+                            <div style="font-size:13px; color:#ccc;">Chat Now</div>
+                        </div>
+                    </a>
+
+                    <a href="https://www.facebook.com/share/1AZYumqwCu/" target="_blank" class="contact-btn contact-facebook">
+                        <div class="icon-box">
+                            <svg viewBox="0 0 24 24">
+                                <path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/>
+                            </svg>
+                        </div>
+                        <div>
+                            <div style="font-weight:bold; color:var(--facebook); font-size:16px;">Facebook</div>
+                            <div style="font-size:13px; color:#ccc;">Visit Profile</div>
+                        </div>
+                    </a>
+                </div>
+                
+                <div style="text-align:center; margin-top:60px; color:rgba(255,255,255,0.3); font-size:11px;">
+                    &copy; 2025 Mawethu Mpande. All rights reserved.
+                </div>
+            </div>
+
         </div>
     </div>
-    <div class="hero-tag">Co-Founder, COO & CFO at Sisonke EduTech</div>
-    <h1>Mawethu Mpande</h1>
-    <p style="color: var(--text-secondary); font-size: 1.1rem; max-width: 600px;">Educational Technology Leader & Creative Business Strategist</p>
-    <a href="#contact" style="margin-top: 2rem; padding: 1rem 2.5rem; background: var(--google-blue); color: #fff; text-decoration: none; border-radius: 50px; font-weight: 700; box-shadow: 0 10px 20px rgba(66, 133, 244, 0.3);">Get In Touch</a>
-</header>
 
-<main class="container">
-    <section id="about">
-        <div class="glass-card">
-            <h2 style="color: var(--google-red);">About</h2>
-            <p style="margin-bottom: 1.5rem;">Co-Founder, COO & CFO of <strong style="color: var(--google-green);">Sisonke EduTech</strong>, a private education technology company in South Africa focused on innovative learning solutions and digital education access.</p>
-            <p style="margin-bottom: 1.5rem;">In this dual leadership role, Mawethu drives operational excellence, financial governance, and sustainable growth — optimizing internal processes while shaping financial strategy to ensure measurable performance and long-term scalability.</p>
-            <p>Beyond Sisonke EduTech, Mawethu offers tutoring, CV writing, graphic design, and digital business solutions — empowering dozens of clients to grow their careers and businesses through education and professional services.</p>
-        </div>
-    </section>
+    <script>
+        /* --- JAVASCRIPT LOGIC --- */
 
-    <section id="ventures">
-        <h2>Leadership & Ventures</h2>
-        <div class="glass-card" style="border-top: 4px solid var(--google-blue);">
-            <h3 style="font-size: 1.8rem;">Sisonke EduTech</h3>
-            <p style="color: var(--google-green); font-weight: 700; margin-bottom: 1rem;">Co-Founder, COO & CFO</p>
-            <p>Private education technology company in South Africa focused on innovative learning solutions and digital education access. Leading operations, finance, and strategic growth.</p>
-        </div>
+        // Loading Screen
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.getElementById('loadingScreen').classList.add('hidden');
+            }, 800);
+        });
 
-        <h3 style="text-align: center; margin-bottom: 1.5rem; color: #fff;">Additional Services</h3>
-        <div class="ventures-grid">
-            <div class="glass-card">
-                <h3>Mathematics Tutoring</h3>
-                <p style="font-size: 0.9rem; color: var(--text-secondary);">Physical and online tutoring for Grades 4-12 with proven results and personalized instruction.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Professional Documents</h3>
-                <p style="font-size: 0.9rem; color: var(--text-secondary);">CV writing, business profiles, and company profiles that help clients stand out.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Design Services</h3>
-                <p style="font-size: 0.9rem; color: var(--text-secondary);">Business ad posters, logos, and branding that elevate your professional presence.</p>
-            </div>
-            <div class="glass-card">
-                <h3>Application Assistance</h3>
-                <p style="font-size: 0.9rem; color: var(--text-secondary);">Job applications and tertiary applications for students applying to TVET Colleges and Universities.</p>
-            </div>
-        </div>
-    </section>
+        // Navigation Logic
+        const menuItems = document.querySelectorAll('.menu-item');
+        const menuGrid = document.getElementById('menuGrid');
+        const mainHeader = document.getElementById('mainHeader');
+        let isTransitioning = false;
 
-    <section id="experience">
-        <h2>Professional Journey</h2>
-        <div class="timeline">
-            <div class="timeline-item">
-                <div class="timeline-date">2023 - Present</div>
-                <h3 style="color: #fff; margin-bottom: 0.2rem;">Co-Founder, COO & CFO — Sisonke EduTech</h3>
-                <p style="color: var(--text-secondary);">Leading operations and finance for an EduTech company delivering innovative learning solutions across South Africa.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2022 - Present</div>
-                <h3 style="color: #fff; margin-bottom: 0.2rem;">Mathematics Tutor</h3>
-                <p style="color: var(--text-secondary);">In-person tutoring supporting learners from primary to high school.</p>
-            </div>
-            <div class="timeline-item">
-                <div class="timeline-date">2020 - 2023</div>
-                <h3 style="color: #fff; margin-bottom: 0.2rem;">IT Support Specialist</h3>
-                <p style="color: var(--text-secondary);">Technical troubleshooting and network maintenance for educational and commercial clients.</p>
-            </div>
-        </div>
-    </section>
+        menuItems.forEach(item => {
+            item.addEventListener('click', () => {
+                if (isTransitioning) return;
+                const sectionId = item.dataset.section;
+                showSection(sectionId);
+            });
+        });
 
-    <section id="skills">
-        <h2>Core Competencies</h2>
-        <div class="skills-grid">
-            <div class="skill-tag">Operational Leadership</div>
-            <div class="skill-tag">Financial Strategy</div>
-            <div class="skill-tag">Business Development</div>
-            <div class="skill-tag">EduTech Innovation</div>
-            <div class="skill-tag">IT Support</div>
-            <div class="skill-tag">Mathematics Tutoring</div>
-            <div class="skill-tag">CV Writing</div>
-            <div class="skill-tag">Logo Design</div>
-            <div class="skill-tag">Graphic Design</div>
-        </div>
-    </section>
+        function showSection(sectionId) {
+            isTransitioning = true;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            // Fade out Menu
+            menuItems.forEach((item, index) => {
+                item.style.transition = 'all 0.3s ease-out';
+                item.style.opacity = '0';
+                item.style.transform = 'translateY(20px)';
+            });
+            mainHeader.style.opacity = '0';
 
-    <section id="contact">
-        <h2>Let's Connect</h2>
-        <div class="contact-grid">
-            <a href="tel:+27714217169" class="contact-btn">
-                <svg width="32" height="32" fill="var(--google-blue)" viewBox="0 0 24 24"><path d="M6.62,10.79C8.06,13.62 10.38,15.94 13.21,17.38L15.41,15.18C15.69,14.9 16.08,14.82 16.43,14.93C17.55,15.3 18.75,15.5 20,15.5A1,1 0 0,1 21,16.5V20A1,1 0 0,1 20,21A17,17 0 0,1 3,4A1,1 0 0,1 4,3H7.5A1,1 0 0,1 8.5,4C8.5,5.25 8.7,6.45 9.07,7.57C9.18,7.92 9.1,8.31 8.82,8.59L6.62,10.79Z"/></svg>
-                <div style="text-align: left;">
-                    <div style="font-weight: 800; font-size: 1.1rem;">Call Me</div>
-                    <div style="color: var(--google-blue); font-size: 0.9rem;">071 421 7169</div>
-                </div>
-            </a>
-            <a href="https://wa.me/27815228419" target="_blank" class="contact-btn">
-                <svg width="32" height="32" fill="var(--google-green)" viewBox="0 0 24 24"><path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2m.01 1.67c2.2 0 4.26.86 5.82 2.42 1.56 1.56 2.41 3.63 2.41 5.83 0 4.54-3.7 8.23-8.24 8.23-1.48 0-2.93-.39-4.19-1.15l-.3-.17-3.12.82.83-3.04-.19-.3a8.132 8.132 0 0 1-1.26-4.38c.01-4.54 3.7-8.24 8.24-8.24m-3.53 3.16c-.19.01-.43.07-.66.33-.24.25-1.01 1.05-1.01 2.57 0 1.51 1.1 2.98 1.24 3.18.14.2 2.17 3.32 5.27 4.66.74.32 1.31.51 1.76.65.74.24 1.41.21 1.94.12.59-.09 1.83-.75 2.09-1.47.25-.72.25-1.34.18-1.47-.08-.13-.28-.2-.58-.35s-1.77-.88-2.05-.98c-.27-.1-.47-.15-.67.15-.2.3-.77 1.05-.94 1.25-.17.19-.34.22-.64.07-1.15-.58-1.92-1.04-2.69-2.38-.2-.34.2-.31.57-1.04.11-.22.05-.41-.02-.56-.08-.15-.68-1.78-.93-2.39-.25-.6-.5-.52-.69-.53-.18-.01-.39-.01-.59-.01z"/></svg>
-                <div style="text-align: left;">
-                    <div style="font-weight: 800; font-size: 1.1rem;">WhatsApp</div>
-                    <div style="color: var(--google-green); font-size: 0.9rem;">Chat Now</div>
-                </div>
-            </a>
-            <a href="https://www.facebook.com/share/1AZYumqwCu/" target="_blank" class="contact-btn">
-                <svg width="32" height="32" fill="#1877f2" viewBox="0 0 24 24"><path d="M12 2.04C6.5 2.04 2 6.53 2 12.06C2 17.06 5.66 21.21 10.44 21.96V14.96H7.9V12.06H10.44V9.85C10.44 7.34 11.93 5.96 14.22 5.96C15.31 5.96 16.45 6.15 16.45 6.15V8.62H15.19C13.95 8.62 13.56 9.39 13.56 10.18V12.06H16.34L15.89 14.96H13.56V21.96A10 10 0 0 0 22 12.06C22 6.53 17.5 2.04 12 2.04Z"/></svg>
-                <div style="text-align: left;">
-                    <div style="font-weight: 800; font-size: 1.1rem;">Facebook</div>
-                    <div style="color: #1877f2; font-size: 0.9rem;">Visit Profile</div>
-                </div>
-            </a>
-        </div>
-    </section>
+            setTimeout(() => {
+                menuGrid.style.display = 'none';
+                mainHeader.style.display = 'none';
 
-    <footer style="margin-top: 4rem; opacity: 0.5;">
-        &copy; 2025 Mawethu Mpande. All rights reserved.
-    </footer>
-</main>
+                // Show Content
+                const target = document.getElementById(sectionId);
+                if (target) {
+                    target.classList.add('active');
+                }
+                isTransitioning = false;
+            }, 300);
+        }
 
+        function backToMenu() {
+            if (isTransitioning) return;
+            isTransitioning = true;
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            const activeSection = document.querySelector('.content-section.active');
+            if (activeSection) {
+                activeSection.classList.remove('active');
+            }
+
+            setTimeout(() => {
+                menuGrid.style.display = 'grid';
+                mainHeader.style.display = 'block';
+                
+                // Force reflow
+                void mainHeader.offsetWidth;
+                mainHeader.style.opacity = '1';
+
+                menuItems.forEach((item, index) => {
+                    setTimeout(() => {
+                        item.style.opacity = '1';
+                        item.style.transform = 'translateY(0) scale(1)';
+                    }, index * 50);
+                });
+
+                isTransitioning = false;
+            }, 300);
+        }
+    </script>
 </body>
 </html>
